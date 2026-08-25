@@ -27,7 +27,7 @@ La traccia dell'esercizio richiedeva di:
 
 ## 🛠️ Stack tecnico
 
-- Laravel 13 / PHP 8.3+, con Laravel Breeze per l'autenticazione
+- Laravel 11 / PHP 8.2+, con Laravel Breeze per l'autenticazione
 - Blade per le viste, Bootstrap 5 + Bootstrap Icons, SCSS con variabili custom
 - Vite per l'asset bundling, gestito con pnpm
 - MySQL come database
@@ -67,7 +67,7 @@ laravel-portfolio/
 
 ### Requisiti
 
-- PHP 8.3 o superiore
+- PHP 8.2 o superiore
 - Composer
 - Node.js con pnpm
 - Un server MySQL
