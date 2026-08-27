@@ -19,7 +19,12 @@
     <div class="card-body p-4">
         <div class="d-flex align-items-center gap-2 mb-2">
             <span class="badge project-slug-badge">{{ $project->slug }}</span>
+        @if ($project->type)
+            <span class="badge project-slug-badge">{{ $project->type->name }}</span>
+        @endif
         </div>
+
+        
 
         <h1 class="project-title">{{ $project->title }}</h1>
 

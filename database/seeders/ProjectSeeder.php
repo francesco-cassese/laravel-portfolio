@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,6 +19,7 @@ class ProjectSeeder extends Seeder
             'slug' => 'e-commerce-platform',
             'description' => 'Una piattaforma di e-commerce full-stack con carrello, checkout e area amministrativa.',
             'image' => null,
+            'type_id' => Type::where('name', 'Back End')->first()->id,
         ]);
 
         Project::create([
@@ -25,6 +27,7 @@ class ProjectSeeder extends Seeder
             'slug' => 'task-manager-app',
             'description' => 'Applicazione per la gestione di task e progetti, con drag & drop e notifiche in tempo reale.',
             'image' => null,
+            'type_id' => Type::where('name', 'Back End')->first()->id,
         ]);
 
         Project::create([
@@ -32,6 +35,7 @@ class ProjectSeeder extends Seeder
             'slug' => 'portfolio-personale',
             'description' => 'Sito portfolio responsive per presentare progetti ed esperienze professionali.',
             'image' => null,
+            'type_id' => Type::where('name', 'Web Design')->first()->id,
         ]);
     }
 }
