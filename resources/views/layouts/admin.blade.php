@@ -19,76 +19,84 @@
 </head>
 
 <body class="admin-body">
-    <div class="d-flex align-items-start" id="admin-app">
+    <div class="admin-app" id="admin-app">
 
-        <!-- Sidebar -->
-        <div class="offcanvas-md offcanvas-start admin-sidebar text-white" tabindex="-1" id="adminSidebar"
+        <!-- Sidebar (Bootstrap offcanvas per il comportamento mobile, stile completamente custom) -->
+        <div class="offcanvas-md offcanvas-start admin-sidebar-wrapper" tabindex="-1" id="adminSidebar"
             aria-labelledby="adminSidebarLabel">
-            <div class="offcanvas-header">
-                <a href="{{ route('dashboard') }}"
-                    class="sidebar-brand d-flex align-items-center gap-2 text-white text-decoration-none">
-                    <span class="brand-mark text-white">{{ Str::substr(config('app.name', 'Laravel'), 0, 1) }}</span>
-                    <span class="fs-6 fw-bold" id="adminSidebarLabel">{{ config('app.name', 'Laravel') }}</span>
-                </a>
-                <button type="button" class="btn-close btn-close-white d-md-none" data-bs-dismiss="offcanvas"
-                    data-bs-target="#adminSidebar" aria-label="{{ __('Close') }}"></button>
-            </div>
-
-            <div class="offcanvas-body d-md-flex flex-column p-0 pt-md-3 overflow-y-auto">
-                <div class="nav-section-title">{{ __('Menu') }}</div>
-                <ul class="nav nav-pills flex-column mb-auto px-2 gap-1">
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                            <i class="bi bi-speedometer2"></i>
-                            {{ __('Dashboard') }}
-                        </a>
-                    </li>
-                </ul>
-
-                <hr class="text-white-50 mx-3">
-
-                <div class="px-2 pb-3 mt-auto">
-                    <a href="{{ url('/') }}" class="nav-link">
-                        <i class="bi bi-box-arrow-left"></i>
-                        {{ __('Torna al sito') }}
+            <div class="admin-sidebar">
+                <div class="admin-sidebar-header">
+                    <a href="{{ route('dashboard') }}" class="sidebar-brand">
+                        <span class="brand-mark">{{ Str::substr(config('app.name', 'Laravel'), 0, 1) }}</span>
+                        <span class="brand-name" id="adminSidebarLabel">{{ config('app.name', 'Laravel') }}</span>
                     </a>
+                    <button type="button" class="sidebar-close d-md-none" data-bs-dismiss="offcanvas"
+                        data-bs-target="#adminSidebar" aria-label="{{ __('Close') }}">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+
+                <div class="admin-sidebar-body">
+                    <div class="nav-section-title">{{ __('Menu') }}</div>
+                    <ul class="admin-nav">
+                        <li>
+                            <a href="{{ route('dashboard') }}"
+                                class="admin-nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                                <i class="bi bi-speedometer2"></i>
+                                {{ __('Dashboard') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.projects.index') }}"
+                                class="admin-nav-link {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
+                                <i class="bi bi-folder"></i>
+                                {{ __('Progetti') }}
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="admin-sidebar-footer">
+                        <a href="{{ url('/') }}" class="admin-nav-link">
+                            <i class="bi bi-box-arrow-left"></i>
+                            {{ __('Torna al sito') }}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Content -->
-        <div class="admin-content flex-grow-1 vh-100 overflow-auto">
+        <div class="admin-content">
 
             <!-- Topbar -->
-            <nav class="admin-topbar navbar navbar-light bg-white border-bottom px-3">
-                <button class="btn btn-outline-secondary d-md-none" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#adminSidebar" aria-controls="adminSidebar" aria-label="{{ __('Toggle sidebar') }}">
-                    <i class="bi bi-list fs-4"></i>
+            <nav class="admin-topbar">
+                <button class="sidebar-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminSidebar"
+                    aria-controls="adminSidebar" aria-label="{{ __('Toggle sidebar') }}">
+                    <i class="bi bi-list"></i>
                 </button>
 
-                <span class="navbar-text fs-5 fw-bold text-dark">
+                <span class="admin-page-title">
                     @yield('page-title', __('Admin'))
                 </span>
 
-                <div class="dropdown ms-auto">
-                    <a href="#" class="d-flex align-items-center gap-2 text-dark text-decoration-none dropdown-toggle"
-                        id="adminUserDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="admin-user-menu dropdown">
+                    <a href="#" class="admin-user-trigger" id="adminUserDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="avatar-circle">{{ Str::substr(Auth::user()->name, 0, 1) }}</span>
-                        <span class="d-none d-sm-inline fw-semibold">{{ Auth::user()->name }}</span>
+                        <span class="admin-user-name">{{ Auth::user()->name }}</span>
+                        <i class="bi bi-chevron-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="adminUserDropdown">
-                        <li><a class="dropdown-item" href="{{ url('profile') }}">
-                            <i class="bi bi-person me-2"></i>{{ __('Profile') }}
+                    <ul class="admin-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="adminUserDropdown">
+                        <li><a class="admin-dropdown-item" href="{{ url('profile') }}">
+                            <i class="bi bi-person"></i>{{ __('Profile') }}
                         </a></li>
                         <li>
-                            <hr class="dropdown-divider">
+                            <hr class="admin-dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item"
+                            <a class="admin-dropdown-item"
                                 href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();">
-                                <i class="bi bi-box-arrow-right me-2"></i>{{ __('Logout') }}
+                                <i class="bi bi-box-arrow-right"></i>{{ __('Logout') }}
                             </a>
                             <form id="admin-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -98,9 +106,9 @@
                 </div>
             </nav>
 
-            <main class="p-4">
+            <main class="admin-main">
                 @if (session('status'))
-                <div class="alert alert-success" role="alert">
+                <div class="admin-alert admin-alert-success" role="alert">
                     {{ session('status') }}
                 </div>
                 @endif
