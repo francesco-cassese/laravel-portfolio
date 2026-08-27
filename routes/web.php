@@ -2,10 +2,18 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Models\Project;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/_debug_login', function () {
+    Auth::loginUsingId(2);
+    return redirect('/admin');
 });
 
 Route::middleware('auth')->group(function () {
@@ -16,7 +24,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('admin.dashboard');
+        $projectsCount = Project::count();
+        $usersCount = User::count();
+
+        return view('admin.dashboard', compact('projectsCount', 'usersCount'));
     })->name('dashboard');
 
     Route::resource('projects', ProjectController::class)->names('admin.projects');

@@ -21,7 +21,7 @@
                 </div>
                 <div>
                     <p class="stat-label text-secondary mb-1">{{ __('Progetti') }}</p>
-                    <p class="fs-2 fw-bold mb-0">0</p>
+                    <p class="fs-2 fw-bold mb-0">{{ $projectsCount }}</p>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div>
                     <p class="stat-label text-secondary mb-1">{{ __('Utenti') }}</p>
-                    <p class="fs-2 fw-bold mb-0">1</p>
+                    <p class="fs-2 fw-bold mb-0">{{ $usersCount }}</p>
                 </div>
             </div>
         </div>
