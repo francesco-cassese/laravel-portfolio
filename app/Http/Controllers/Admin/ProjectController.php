@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -22,7 +23,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -30,6 +32,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'nullable|image|max:2048',
+        ]);
+
         $data = $request->all();
 
         $newProject = new Project();
@@ -37,8 +43,12 @@ class ProjectController extends Controller
         $newProject->title = $data['title'];
         $newProject->slug = $data['slug'];
         $newProject->description = $data['description'];
-        $newProject->image = $data['image'];
         $newProject->repo_url = $data['repo_url'] ?? null;
+        $newProject->type_id = $data['type_id'];
+
+        if ($request->hasFile('image')) {
+            $newProject->image = $request->file('image')->store('projects', 'public');
+        }
 
         $newProject->save();
 
@@ -58,7 +68,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -66,13 +77,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $request->validate([
+            'image' => 'nullable|image|max:2048',
+        ]);
+
         $data = $request->all();
 
         $project->title = $data['title'];
         $project->slug = $data['slug'];
         $project->description = $data['description'];
-        $project->image = $data['image'];
         $project->repo_url = $data['repo_url'] ?? null;
+        $project->type_id = $data['type_id'];
+
+        if ($request->hasFile('image')) {
+            $project->image = $request->file('image')->store('projects', 'public');
+        }
 
         $project->save();
 
