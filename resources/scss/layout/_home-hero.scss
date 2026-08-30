@@ -1,0 +1,36 @@
+.home-hero {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(135deg, $accent 0%, $accent-gradient-mid 55%, $accent-gradient-end 100%);
+}
+
+.home-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, .2), transparent 60%);
+}
+
+.home-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.home-hero-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.home-hero-subtitle {
+    font-size: 1.15rem;
+    opacity: .9;
+    max-width: 40rem;
+}
+
+@media (max-width: 767px) {
+    .home-hero-title {
+        font-size: 2rem;
+    }
+}

@@ -1,4 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
-@import 'admin';
-@import 'home';
 
+@import 'abstracts/variables';
+
+@import 'base/base';
+
+@import 'components/hero';
+@import 'components/project-card';
+@import 'components/badge';
+@import 'components/stat-card';
+@import 'components/quick-actions';
+@import 'components/avatar';
+@import 'components/form';
+@import 'components/table';
+
+@import 'layout/home-hero';
+@import 'layout/admin-sidebar';
+@import 'layout/admin-topbar';
+@import 'layout/admin-main';
+
+@import 'pages/home';
+@import 'pages/admin-project-show';

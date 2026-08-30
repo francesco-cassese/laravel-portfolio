@@ -1,0 +1,136 @@
+.admin-app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar-wrapper {
+    --bs-offcanvas-width: 260px;
+}
+
+@media (min-width: 768px) {
+    .admin-sidebar-wrapper {
+        width: 260px;
+        position: sticky;
+        top: 0;
+        align-self: flex-start;
+    }
+}
+
+.admin-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: $sidebar-bg;
+    color: rgba(255, 255, 255, .85);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: .55rem;
+    background-color: $accent;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.admin-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.1rem;
+}
+
+.sidebar-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: .5rem;
+    background-color: rgba(255, 255, 255, .08);
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .sidebar-close {
+        display: none;
+    }
+}
+
+.admin-sidebar-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding-top: .5rem;
+    overflow-y: auto;
+}
+
+.admin-sidebar-footer {
+    margin-top: auto;
+    padding: 1rem .9rem;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.nav-section-title {
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: rgba(255, 255, 255, .35);
+    padding: 0 .9rem;
+    margin-bottom: .5rem;
+}
+
+.admin-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0 .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .6rem .9rem;
+    border-radius: .5rem;
+    font-size: .9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, .65);
+    text-decoration: none;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.admin-nav-link i {
+    font-size: 1.05rem;
+    width: 1.1rem;
+    text-align: center;
+}
+
+.admin-nav-link:hover {
+    color: #fff;
+    background-color: $sidebar-hover;
+}
+
+.admin-nav-link.active {
+    color: #fff;
+    background-color: $accent;
+}

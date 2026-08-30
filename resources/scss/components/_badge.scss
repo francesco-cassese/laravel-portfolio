@@ -1,0 +1,21 @@
+.project-type-badge {
+    display: inline-block;
+    background-color: rgba($accent, .1);
+    color: $accent;
+    font-weight: 600;
+    font-size: .75rem;
+    letter-spacing: .03em;
+    padding: .3rem .65rem;
+    border-radius: .5rem;
+    margin-bottom: .5rem;
+}
+
+.project-slug-badge {
+    background-color: rgba($accent, .1);
+    color: $accent;
+    font-weight: 600;
+    font-size: .75rem;
+    letter-spacing: .03em;
+    padding: .4rem .75rem;
+    border-radius: .5rem;
+}

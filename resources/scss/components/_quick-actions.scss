@@ -1,0 +1,52 @@
+.quick-actions-card {
+    border: none;
+    border-radius: .75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 1px 3px rgba(0, 0, 0, .04);
+}
+
+.quick-actions-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+}
+
+.quick-action {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .8rem 1rem;
+    border-radius: .65rem;
+    border: 1px solid rgba(0, 0, 0, .08);
+    color: inherit;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.quick-action i {
+    width: 40px;
+    height: 40px;
+    border-radius: .55rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    background-color: rgba($accent, .1);
+    color: $accent;
+}
+
+.quick-action span {
+    font-weight: 600;
+    font-size: .9rem;
+}
+
+.quick-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .06);
+    border-color: rgba($accent, .3);
+}

@@ -12,7 +12,7 @@
     <i class="bi bi-stars hero-icon"></i>
 </div>
 
-<div class="row g-3 dashboard-stats">
+<div class="row g-3">
     <div class="col-md-4">
         <div class="card stat-card">
             <div class="card-body d-flex align-items-center gap-3">
