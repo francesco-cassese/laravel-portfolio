@@ -11,10 +11,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/_debug_login', function () {
-    Auth::loginUsingId(2);
-    return redirect('/admin');
-});
+if (app()->environment('local')) {
+    Route::get('/_debug_login', function () {
+        Auth::loginUsingId(1);
+        return redirect('/admin');
+    });
+}
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
