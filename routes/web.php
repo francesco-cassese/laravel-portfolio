@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    $projects = Project::with('type')->latest()->take(6)->get();
+    return view('home', compact('projects'));
 });
 
 if (app()->environment('local')) {
