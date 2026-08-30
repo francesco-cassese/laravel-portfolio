@@ -31,6 +31,11 @@
         <p class="project-description">{{ $project->description }}</p>
 
         <div class="d-flex gap-2 mt-3">
+            @if ($project->repo_url)
+                <a href="{{ $project->repo_url }}" target="_blank" rel="noopener" class="btn btn-outline-dark">
+                    <i class="bi bi-github"></i> Repository
+                </a>
+            @endif
             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-secondary">
                 <i class="bi bi-pencil"></i> Modifica
             </a>

@@ -28,6 +28,11 @@
         <input type="file" name="image" id="image" class="form-control">
     </div>
 
+    <div class="mb-3">
+        <label for="repo_url" class="form-label">Link repository GitHub</label>
+        <input type="url" name="repo_url" id="repo_url" class="form-control" placeholder="https://github.com/...">
+    </div>
+
 </form>
 
 @endsection

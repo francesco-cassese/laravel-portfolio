@@ -12,6 +12,7 @@ class Project extends Model
         'slug',
         'description',
         'image',
+        'repo_url',
         'type_id',
     ];
 

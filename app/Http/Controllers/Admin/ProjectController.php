@@ -38,6 +38,7 @@ class ProjectController extends Controller
         $newProject->slug = $data['slug'];
         $newProject->description = $data['description'];
         $newProject->image = $data['image'];
+        $newProject->repo_url = $data['repo_url'] ?? null;
 
         $newProject->save();
 
@@ -71,6 +72,7 @@ class ProjectController extends Controller
         $project->slug = $data['slug'];
         $project->description = $data['description'];
         $project->image = $data['image'];
+        $project->repo_url = $data['repo_url'] ?? null;
 
         $project->save();
 
