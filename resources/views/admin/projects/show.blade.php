@@ -4,7 +4,7 @@
 
 @section('content')
 <a href="{{ route('admin.projects.index') }}" class="btn btn-link ps-0 mb-3 text-decoration-none">
-    <i class="bi bi-arrow-left"></i> {{ __('Torna ai progetti') }}
+    <i class="bi bi-arrow-left"></i> Torna ai progetti
 </a>
 
 <div class="project-show card overflow-hidden">
@@ -32,10 +32,10 @@
 
         <div class="d-flex gap-2 mt-3">
             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-secondary">
-                <i class="bi bi-pencil"></i> {{ __('Modifica') }}
+                <i class="bi bi-pencil"></i> Modifica
             </a>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="bi bi-trash"></i> {{ __('Elimina') }}
+                <i class="bi bi-trash"></i> Elimina
             </button>
         </div>
     </div>
@@ -45,18 +45,18 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Elimina il progetto') }}</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina il progetto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {{ __('Vuoi eliminare il progetto?') }}
+                Vuoi eliminare il progetto?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Annulla') }}</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <input type="submit" class="btn btn-outline-danger" value="{{ __('Elimina definitivamente') }}">
+                    <input type="submit" class="btn btn-outline-danger" value="Elimina definitivamente">
                 </form>
             </div>
         </div>

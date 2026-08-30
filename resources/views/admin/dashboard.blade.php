@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('page-title', __('Dashboard'))
+@section('page-title', 'Dashboard')
 
 @section('content')
 <div class="admin-hero mb-4">
     <div>
-        <p class="hero-eyebrow">{{ __('Bentornato') }}</p>
+        <p class="hero-eyebrow">Bentornato</p>
         <h1 class="hero-title">{{ Auth::user()->name }}</h1>
-        <p class="hero-subtitle">{{ __('Ecco un riepilogo del tuo portfolio') }} · {{ now()->format('d/m/Y') }}</p>
+        <p class="hero-subtitle">Ecco un riepilogo del tuo portfolio · {{ now()->format('d/m/Y') }}</p>
     </div>
     <i class="bi bi-stars hero-icon"></i>
 </div>
@@ -20,7 +20,7 @@
                     <i class="bi bi-kanban"></i>
                 </div>
                 <div>
-                    <p class="stat-label text-secondary mb-1">{{ __('Progetti') }}</p>
+                    <p class="stat-label text-secondary mb-1">Progetti</p>
                     <p class="fs-2 fw-bold mb-0">{{ $projectsCount }}</p>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     <i class="bi bi-envelope"></i>
                 </div>
                 <div>
-                    <p class="stat-label text-secondary mb-1">{{ __('Messaggi') }}</p>
+                    <p class="stat-label text-secondary mb-1">Messaggi</p>
                     <p class="fs-2 fw-bold mb-0">0</p>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <i class="bi bi-people"></i>
                 </div>
                 <div>
-                    <p class="stat-label text-secondary mb-1">{{ __('Utenti') }}</p>
+                    <p class="stat-label text-secondary mb-1">Utenti</p>
                     <p class="fs-2 fw-bold mb-0">{{ $usersCount }}</p>
                 </div>
             </div>
@@ -56,15 +56,15 @@
 
 <div class="card quick-actions-card mt-4">
     <div class="card-body">
-        <h2 class="quick-actions-title">{{ __('Azioni rapide') }}</h2>
+        <h2 class="quick-actions-title">Azioni rapide</h2>
         <div class="quick-actions">
             <a href="{{ route('profile.edit') }}" class="quick-action">
                 <i class="bi bi-person-gear"></i>
-                <span>{{ __('Modifica profilo') }}</span>
+                <span>Modifica profilo</span>
             </a>
             <a href="{{ url('/') }}" class="quick-action">
                 <i class="bi bi-globe"></i>
-                <span>{{ __('Vedi il sito') }}</span>
+                <span>Vedi il sito</span>
             </a>
         </div>
     </div>

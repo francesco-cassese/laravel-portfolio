@@ -1,14 +1,11 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="it">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }} - @yield('page-title', __('Admin'))</title>
+    <title>{{ config('app.name', 'Laravel') }} - @yield('page-title', 'Admin')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,26 +28,26 @@
                         <span class="brand-name" id="adminSidebarLabel">{{ config('app.name', 'Laravel') }}</span>
                     </a>
                     <button type="button" class="sidebar-close d-md-none" data-bs-dismiss="offcanvas"
-                        data-bs-target="#adminSidebar" aria-label="{{ __('Close') }}">
+                        data-bs-target="#adminSidebar" aria-label="Close">
                         <i class="bi bi-x-lg"></i>
                     </button>
                 </div>
 
                 <div class="admin-sidebar-body">
-                    <div class="nav-section-title">{{ __('Menu') }}</div>
+                    <div class="nav-section-title">Menu</div>
                     <ul class="admin-nav">
                         <li>
                             <a href="{{ route('dashboard') }}"
                                 class="admin-nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                                 <i class="bi bi-speedometer2"></i>
-                                {{ __('Dashboard') }}
+                                Dashboard
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('admin.projects.index') }}"
                                 class="admin-nav-link {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
                                 <i class="bi bi-folder"></i>
-                                {{ __('Progetti') }}
+                                Progetti
                             </a>
                         </li>
                     </ul>
@@ -58,7 +55,7 @@
                     <div class="admin-sidebar-footer">
                         <a href="{{ url('/') }}" class="admin-nav-link">
                             <i class="bi bi-box-arrow-left"></i>
-                            {{ __('Torna al sito') }}
+                            Torna al sito
                         </a>
                     </div>
                 </div>
@@ -71,12 +68,12 @@
             <!-- Topbar -->
             <nav class="admin-topbar">
                 <button class="sidebar-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminSidebar"
-                    aria-controls="adminSidebar" aria-label="{{ __('Toggle sidebar') }}">
+                    aria-controls="adminSidebar" aria-label="Toggle sidebar">
                     <i class="bi bi-list"></i>
                 </button>
 
                 <span class="admin-page-title">
-                    @yield('page-title', __('Admin'))
+                    @yield('page-title', 'Admin')
                 </span>
 
                 <div class="admin-user-menu dropdown">
@@ -87,7 +84,7 @@
                     </a>
                     <ul class="admin-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="adminUserDropdown">
                         <li><a class="admin-dropdown-item" href="{{ url('profile') }}">
-                            <i class="bi bi-person"></i>{{ __('Profile') }}
+                            <i class="bi bi-person"></i>Profile
                         </a></li>
                         <li>
                             <hr class="admin-dropdown-divider">
@@ -96,7 +93,7 @@
                             <a class="admin-dropdown-item"
                                 href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();">
-                                <i class="bi bi-box-arrow-right"></i>{{ __('Logout') }}
+                                <i class="bi bi-box-arrow-right"></i>Logout
                             </a>
                             <form id="admin-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
