@@ -30,6 +30,12 @@
 
         <p class="project-description">{{ $project->description }}</p>
 
+        <div class="d-flex flex-wrap gap-2 mb-3">
+            @foreach ($project->technologies as $technology)
+                <span class="badge" style="background-color: {{ $technology->color }}">{{ $technology->name }}</span>
+            @endforeach
+        </div>
+
         <div class="d-flex gap-2 mt-3">
             @if ($project->repo_url)
                 <a href="{{ $project->repo_url }}" target="_blank" rel="noopener" class="btn btn-outline-dark">
