@@ -20,6 +20,8 @@ Nessun frontend framework, solo Laravel con Blade, Bootstrap e uno stile persona
 ## 📸 Screenshot
 
 ![Dashboard admin](docs/screenshot-dashboard.png)
+![Home page pubblica](docs/screenshot-home.png)
+![Dettaglio progetto in area admin](docs/screenshot-project-show.png)
 
 ## 🎯 Obiettivi dell'esercizio
 
