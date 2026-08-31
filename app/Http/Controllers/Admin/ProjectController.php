@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -48,8 +49,9 @@ class ProjectController extends Controller
         $newProject->repo_url = $data['repo_url'] ?? null;
         $newProject->type_id = $data['type_id'];
 
-        if ($request->hasFile('image')) {
-            $newProject->image = $request->file('image')->store('projects', 'public');
+        if (array_key_exists('image', $data)) {
+            $img_url = Storage::disk('public')->putFile('projects', $data['image']);
+            $newProject->image = $img_url;
         }
 
         $newProject->save();
@@ -98,8 +100,9 @@ class ProjectController extends Controller
         $project->repo_url = $data['repo_url'] ?? null;
         $project->type_id = $data['type_id'];
 
-        if ($request->hasFile('image')) {
-            $project->image = $request->file('image')->store('projects', 'public');
+        if (array_key_exists('image', $data)) {
+            $img_url = Storage::disk('public')->putFile('projects', $data['image']);
+            $project->image = $img_url;
         }
 
         $project->save();
