@@ -50,6 +50,20 @@
                                 Progetti
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.types.index') }}"
+                                class="admin-nav-link {{ request()->routeIs('admin.types.*') ? 'active' : '' }}">
+                                <i class="bi bi-tags"></i>
+                                Tipologie
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.technologies.index') }}"
+                                class="admin-nav-link {{ request()->routeIs('admin.technologies.*') ? 'active' : '' }}">
+                                <i class="bi bi-code-slash"></i>
+                                Tecnologie
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="admin-sidebar-footer">
