@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Models\Project;
 use App\Models\User;
@@ -37,6 +38,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('projects', ProjectController::class)->names('admin.projects');
 
     Route::resource('types', TypeController::class)->names('admin.types');
+
+    Route::resource('technologies', TechnologyController::class)->names('admin.technologies');
 });
 
 require __DIR__ . '/auth.php';
