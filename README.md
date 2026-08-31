@@ -14,6 +14,7 @@ Nessun frontend framework, solo Laravel con Blade, Bootstrap e uno stile persona
 - **CRUD delle tipologie di progetto** (`TypeController`) e **CRUD delle tecnologie** (`TechnologyController`), entrambi raggiungibili dalla sidebar admin
 - Relazione **uno-a-molti** tra `Project` e `Type` (un progetto ha una tipologia) e relazione **molti-a-molti** tra `Project` e `Technology` tramite la tabella pivot `project_technology` (un progetto può avere più tecnologie, selezionabili via checkbox nei form)
 - Home page pubblica con hero e griglia dei progetti più recenti, badge colorati per le tecnologie associate a ciascun progetto
+- **API JSON** (`routes/api.php`, `Api\ProjectController`) con rotte `GET /api/projects` e `GET /api/projects/{project}` per esporre l'elenco progetti e il dettaglio di un singolo progetto (con tipologia e tecnologie), pensate per un futuro frontend esterno; CORS configurato in `config/cors.php` per autorizzare le chiamate da tale frontend
 - Seeder realistici: tipologie, tecnologie e progetti demo con le rispettive associazioni già popolate
 - Stile custom in **SCSS**, organizzato secondo il pattern **7-1** (abstracts, base, components, layout, pages), con Bootstrap Icons e senza librerie JS aggiuntive
 
@@ -50,6 +51,8 @@ laravel-portfolio/
 │   │   │   ├── ProjectController.php    # CRUD progetti (immagine, tipologia, tecnologie)
 │   │   │   ├── TypeController.php       # CRUD tipologie di progetto
 │   │   │   └── TechnologyController.php # CRUD tecnologie
+│   │   ├── Api/
+│   │   │   └── ProjectController.php    # Endpoint JSON: elenco progetti e dettaglio
 │   │   ├── Auth/                        # Controller di autenticazione (Breeze)
 │   │   └── ProfileController.php        # Gestione profilo utente
 │   └── Models/
@@ -76,7 +79,10 @@ laravel-portfolio/
 │       └── home.blade.php               # Homepage pubblica con griglia progetti
 ├── routes/
 │   ├── web.php                          # Rotte pubbliche, profilo e admin (resource routes)
+│   ├── api.php                          # Rotte JSON per progetti (index/show)
 │   └── auth.php                         # Rotte di autenticazione (Breeze)
+├── config/
+│   └── cors.php                         # Origini esterne autorizzate a chiamare l'API
 └── README.md
 ```
 
@@ -143,6 +149,7 @@ Poi visita [http://localhost:8000](http://localhost:8000) per il sito pubblico, 
 - La pagina di dettaglio progetto (`admin/projects/show.blade.php`) mostra la tipologia e i badge delle tecnologie associate, colorati in base al campo `color` di ciascuna `Technology`.
 - La homepage pubblica (`home.blade.php`) mostra gli ultimi progetti inseriti in una griglia di card, con le relative tecnologie.
 - I seeder (`TypeSeeder`, `TechnologySeeder`, `ProjectSeeder`, eseguiti in quest'ordine da `DatabaseSeeder`) popolano tipologie, tecnologie e progetti demo con link GitHub reali e le associazioni progetto-tecnologie già create.
+- `routes/api.php` (registrato in `bootstrap/app.php`) espone `Api\ProjectController@index` e `@show`: restituiscono i progetti in JSON con le relazioni `type` e `technologies` caricate (`with()`/`load()`), usando il route model binding su `{project}`. `config/cors.php` autorizza `http://localhost:5173` (porta di default di Vite) come origine esterna abilitata a chiamare queste rotte.
 - Lo stile dell'area admin e del sito pubblico è organizzato in `resources/scss/` secondo il pattern 7-1 (abstracts, base, components, layout, pages), senza dipendenze JS aggiuntive oltre a Bootstrap.
 
 ## 👤 Autore
