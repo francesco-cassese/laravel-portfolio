@@ -101,6 +101,9 @@ class ProjectController extends Controller
         $project->type_id = $data['type_id'];
 
         if (array_key_exists('image', $data)) {
+
+            Storage::delete($project->image);
+
             $img_url = Storage::disk('public')->putFile('projects', $data['image']);
             $project->image = $img_url;
         }
@@ -121,6 +124,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        if ($project->image) {
+
+            Storage::delete($project->image);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index');
